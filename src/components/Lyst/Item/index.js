@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import moment from 'moment-timezone';
 
 const Container = styled.View`
   padding: 10px 20px;
@@ -19,6 +20,13 @@ const PostDate = styled.Text`
 `;
 
 const Item = ({ item }) => {
+  const timeZone = moment.tz.guess();
+  const createdAtMoment = moment.tz(
+    item.created_at,
+    "ddd MMM DD HH:mm:ss ZZ YYYY",
+    timeZone
+  );
+
   return (
     <Container>
       <Author>
@@ -28,7 +36,7 @@ const Item = ({ item }) => {
         {item.text}
       </Content>
       <PostDate>
-        {item.created_at}
+        {createdAtMoment.format("DD/MM/YYYY HH:mm")}
       </PostDate>
     </Container>
   );
