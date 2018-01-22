@@ -17,8 +17,7 @@ const Author = styled.Text`
 
 const Content = styled.Text`
   font-size: ${fonts.medium.size};
-  color: ${colors.ming};
-7717A;
+  color: ${colors.sapphire};
 `;
 
 const Date = styled.Text`

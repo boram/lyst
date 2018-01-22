@@ -15,6 +15,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
+    this.fetchData();
     const intervalId = setInterval(this.fetchData, UPDATE_INTERVAL);
     this.setState({ intervalId });
   }
