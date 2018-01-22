@@ -7,12 +7,18 @@ import {
 } from 'config';
 
 class Main extends Component {
+  static defaultProps = {
+    feedUrl: FEED_URL,
+    limit: POSTS_COUNT,
+    updateInterval: UPDATE_INTERVAL,
+  }
+
   state = {
     data: [],
     error: null,
     intervalId: null,
     loading: false,
-  }
+  };
 
   componentDidMount() {
     this.fetchData();
