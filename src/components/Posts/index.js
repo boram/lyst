@@ -4,10 +4,12 @@ import { FlatList } from 'react-native';
 import { Title } from 'components/common/typography';
 import Item from './Item';
 
+import colors from 'theme/colors';
+
 const Container = styled.View`
   margin-top: 40px;
   padding: 20px;
-  background-color: #F1F2EE;
+  background-color: ${colors.lightCyan};
   height: 100%;
 `
 

@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
+import colors from 'theme/colors';
+import fonts from 'theme/fonts';
 
 export const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  color: #1B9AAA;
+  font-size: ${fonts.large.size};
+  font-weight: 900;
+  color: ${colors.lightSeaGreen};
+  color: #785469;
 `
 

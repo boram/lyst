@@ -1,22 +1,30 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import moment from 'moment-timezone';
+import colors from 'theme/colors';
+import fonts from 'theme/fonts';
 
 const Container = styled.View`
-  padding: 10px 20px;
+  padding-top: 20px;
 `;
 
 const Author = styled.Text`
-  font-size: 20px;
-  font-weight: 600;
+  font-size: ${fonts.medium.size};
+  line-height: ${fonts.medium.lineHeight};
+  font-weight: 800;
+  color: ${colors.sapphire};
 `;
 
 const Content = styled.Text`
-  font-size: 16px;
+  font-size: ${fonts.medium.size};
+  color: ${colors.ming};
+7717A;
 `;
 
-const PostDate = styled.Text`
-  font-size: 16px;
+const Date = styled.Text`
+  font-size: ${fonts.small.size};
+  line-height: ${fonts.small.lineHeight};
+  color: ${colors.verdigris};
 `;
 
 const Item = ({ item }) => {
@@ -35,9 +43,9 @@ const Item = ({ item }) => {
       <Content>
         {item.text}
       </Content>
-      <PostDate>
+      <Date>
         {createdAtMoment.format("DD/MM/YYYY HH:mm")}
-      </PostDate>
+      </Date>
     </Container>
   );
 }
