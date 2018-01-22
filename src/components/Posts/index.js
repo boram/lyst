@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { List } from 'react-native-elements';
 import Item from './Item';
 
-const Lyst = ({ items }) => {
+const Posts = ({ items }) => {
   return (
     <List>
       <FlatList
@@ -15,4 +15,4 @@ const Lyst = ({ items }) => {
   );
 }
 
-export default Lyst;
+export default Posts;

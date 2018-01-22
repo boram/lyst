@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Lyst from 'components/Lyst';
+import Posts from 'components/Posts';
 import {
   FEED_URL,
   POSTS_COUNT,
@@ -8,11 +8,10 @@ import {
 
 class Main extends Component {
   state = {
-    loading: false,
     data: [],
-    entityId: null,
     error: null,
     intervalId: null,
+    loading: false,
   }
 
   componentDidMount() {
@@ -25,8 +24,6 @@ class Main extends Component {
   }
 
   fetchData = async () => {
-    const { entityId } = this.state;
-
     this.setState({ loading: true });
 
     const url = `${FEED_URL}?limit=${POSTS_COUNT}`;
@@ -48,7 +45,7 @@ class Main extends Component {
   };
 
   render() {
-    return <Lyst items={this.state.data} />;
+    return <Posts items={this.state.data} />;
   }
 }
 
