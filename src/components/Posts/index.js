@@ -11,16 +11,16 @@ const Container = styled.View`
   padding: 20px;
   background-color: ${colors.lightCyan};
   height: 100%;
-`
+`;
 
-const Header = styled.View`
+export const Header = styled.View`
   margin-bottom: 10px;
-`
+`;
 
-const UpdateStatus = styled.Text`
+export const UpdateStatus = styled.Text`
   font-size: ${fonts.small.size};
   color: ${colors.verdigris};
-`
+`;
 
 const Posts = (props) => {
   const {
@@ -45,6 +45,6 @@ const Posts = (props) => {
       />
     </Container>
   );
-}
+};
 
 export default Posts;
