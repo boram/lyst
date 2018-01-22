@@ -3,22 +3,25 @@ import Lyst from 'components/Lyst';
 import {
   FEED_URL,
   POSTS_COUNT,
+  UPDATE_INTERVAL,
 } from 'config';
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: false,
-      data: [],
-      entityId: null,
-      error: null,
-    };
+  state = {
+    loading: false,
+    data: [],
+    entityId: null,
+    error: null,
+    intervalId: null,
   }
 
   componentDidMount() {
-    this.fetchData();
+    const intervalId = setInterval(this.fetchData, UPDATE_INTERVAL);
+    this.setState({ intervalId });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
   }
 
   fetchData = async () => {
@@ -30,11 +33,11 @@ class Main extends Component {
 
     try {
       const response = await fetch(url);
-      const json = await response.json();
+      const payload = await response.json();
 
       this.setState(
         {
-          data: [...this.state.data, ...json],
+          data: payload,
           error: null,
           loading: false,
         }
