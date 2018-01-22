@@ -8,19 +8,19 @@ const Container = styled.View`
   padding-top: 20px;
 `;
 
-const Author = styled.Text`
+export const Author = styled.Text`
   font-size: ${fonts.medium.size};
   line-height: ${fonts.medium.lineHeight};
   font-weight: 800;
   color: ${colors.sapphire};
 `;
 
-const Content = styled.Text`
+export const Content = styled.Text`
   font-size: ${fonts.medium.size};
   color: ${colors.sapphire};
 `;
 
-const Date = styled.Text`
+export const CreatedAt = styled.Text`
   font-size: ${fonts.small.size};
   line-height: ${fonts.small.lineHeight};
   color: ${colors.verdigris};
@@ -46,9 +46,9 @@ const Item = (props) => {
       <Content>
         {item.text}
       </Content>
-      <Date>
+      <CreatedAt>
         {createdAt}
-      </Date>
+      </CreatedAt>
     </Container>
   );
 }
