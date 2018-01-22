@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Lyst from 'components/Lyst';
+import {
+  FEED_URL,
+  POSTS_COUNT,
+} from 'config';
 
 class Main extends Component {
   constructor(props) {
@@ -18,11 +22,11 @@ class Main extends Component {
   }
 
   fetchData = async () => {
-    const url = "http://api.massrelevance.com/MassRelDemo/kindle.json";
-
     const { entityId } = this.state;
 
     this.setState({ loading: true });
+
+    const url = `${FEED_URL}?limit=${POSTS_COUNT}`;
 
     try {
       const response = await fetch(url);
