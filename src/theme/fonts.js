@@ -8,8 +8,8 @@ const fonts = {
     lineHeight: 36,
   },
   large: {
-    size: 24,
-    lineHeight: 31,
+    size: 36,
+    lineHeight: 54,
   }
 }
 

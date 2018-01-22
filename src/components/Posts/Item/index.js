@@ -26,13 +26,17 @@ const Date = styled.Text`
   color: ${colors.verdigris};
 `;
 
-const Item = ({ item }) => {
-  const timeZone = moment.tz.guess();
-  const createdAtMoment = moment.tz(
+const Item = (props) => {
+  const {
+    item,
+    timeZone,
+  } = props;
+
+  const createdAt = moment.tz(
     item.created_at,
     "ddd MMM DD HH:mm:ss ZZ YYYY",
     timeZone
-  );
+  ).format("DD/MM/YYYY HH:mm");
 
   return (
     <Container>
@@ -43,7 +47,7 @@ const Item = ({ item }) => {
         {item.text}
       </Content>
       <Date>
-        {createdAtMoment.format("DD/MM/YYYY HH:mm")}
+        {createdAt}
       </Date>
     </Container>
   );

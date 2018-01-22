@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { FlatList } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { Title } from 'components/common/typography';
 import Item from './Item';
-
 import colors from 'theme/colors';
+import fonts from 'theme/fonts';
 
 const Container = styled.View`
   margin-top: 40px;
@@ -13,10 +13,31 @@ const Container = styled.View`
   height: 100%;
 `
 
-const Posts = ({ items }) => {
+const Header = styled.View`
+  margin-bottom: 10px;
+`
+
+const UpdateStatus = styled.Text`
+  font-size: ${fonts.small.size};
+  color: ${colors.verdigris};
+`
+
+const Posts = (props) => {
+  const {
+    items,
+    timeZone,
+    updatedAt,
+  } = props;
+
   return (
     <Container>
-      <Title>RECENT POSTS</Title>
+      <Header>
+        <Title>RECENT POSTS</Title>
+        {updatedAt &&
+          <UpdateStatus>
+            Last updated at {updatedAt}
+          </UpdateStatus>}
+      </Header>
       <FlatList
         data={items}
         renderItem={Item}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 import Posts from 'components/Posts';
 import {
   FEED_URL,
@@ -18,11 +19,21 @@ class Main extends Component {
     error: null,
     intervalId: null,
     loading: false,
+    timeZone: null,
+    updatedAt: null,
   };
+
+  constructor(props) {
+    super(props);
+    this.state.timeZone = moment.tz.guess();
+  }
 
   componentDidMount() {
     this.fetchData();
-    const intervalId = setInterval(this.fetchData, UPDATE_INTERVAL);
+
+    const { updateInterval } = this.props;
+    const intervalId = setInterval(this.fetchData, updateInterval);
+
     this.setState({ intervalId });
   }
 
@@ -31,19 +42,23 @@ class Main extends Component {
   }
 
   fetchData = async () => {
-    this.setState({ loading: true });
+    const { feedUrl, limit } = this.props;
+    const { timeZone } = this.state;
+    const url = `${feedUrl}?limit=${limit}`;
 
-    const url = `${FEED_URL}?limit=${POSTS_COUNT}`;
+    this.setState({ loading: true });
 
     try {
       const response = await fetch(url);
       const payload = await response.json();
+      const updatedAt = moment.tz(timeZone).format('h:mma');
 
       this.setState(
         {
           data: payload,
           error: null,
           loading: false,
+          updatedAt,
         }
       );
     } catch(error) {
@@ -52,7 +67,19 @@ class Main extends Component {
   };
 
   render() {
-    return <Posts items={this.state.data} />;
+    const {
+      data,
+      timeZone,
+      updatedAt
+    } = this.state;
+
+    return (
+      <Posts
+        items={data}
+        updatedAt={updatedAt}
+        timeZone={timeZone}
+      />
+    );
   }
 }
 
