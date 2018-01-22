@@ -1,17 +1,26 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
-import { List } from 'react-native-elements';
+import { Title } from 'components/common/typography';
 import Item from './Item';
+
+const Container = styled.View`
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #F1F2EE;
+  height: 100%;
+`
 
 const Posts = ({ items }) => {
   return (
-    <List>
+    <Container>
+      <Title>RECENT POSTS</Title>
       <FlatList
         data={items}
         renderItem={Item}
         keyExtractor={item => item.id}
       />
-    </List>
+    </Container>
   );
 }
 
